@@ -6,6 +6,7 @@ import Testimonial from '../components/Testimonial/Testimonial';
 import About from '../components/About/About';
 import Faq from '../components/FAQ/Faq';
 import Footer from '../components/Footer/Footer';
+import React from 'react';
 
 function Home() {
   return (

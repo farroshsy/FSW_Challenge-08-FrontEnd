@@ -8,6 +8,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
   ],
   overrides: [
   ],
@@ -19,6 +20,13 @@ module.exports = {
     'react',
   ],
   rules: {
-        "strict": 0
+        "strict": 0,
+        "react/no-unescaped-entities": 0,
+          "react/prop-types": "off"
   },
-};
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+}

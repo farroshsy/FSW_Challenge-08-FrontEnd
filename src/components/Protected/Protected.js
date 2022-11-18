@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
+// eslint-disable-next-line react/prop-types
 function Protected({ children }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
