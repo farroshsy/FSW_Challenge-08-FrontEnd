@@ -12,8 +12,9 @@ import store from './redux/store';
 
 function App() {
   return (
+    // eslint-disable-next-line
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
