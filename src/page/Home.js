@@ -7,23 +7,22 @@ import About from '../components/About/About';
 import Faq from '../components/FAQ/Faq';
 import Footer from '../components/Footer/Footer';
 
-
 function Home() {
-    return (
-        <>
-            <Navbar />
-            <MulaiSewa />
+  return (
+    <>
+      <Navbar />
+      <MulaiSewa />
 
-            <main>
-                <Ourservices />
-                <Whyus />
-                <Testimonial />
-                <About />
-                <Faq />
-            </main>
-            <Footer />
-        </>
-    );
+      <main>
+        <Ourservices />
+        <Whyus />
+        <Testimonial />
+        <About />
+        <Faq />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default Home;

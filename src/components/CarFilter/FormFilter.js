@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { DatePicker } from 'antd'
 import Swal from 'sweetalert2';
-import { Col, Form } from "react-bootstrap";
+import { Col, Form } from 'react-bootstrap';
 
-import Car from "../CarList/CardCar";
-import { getAllCars } from "../../redux/actions/carsActions";
+import Car from '../CarList/CardCar';
+import { getAllCars } from '../../redux/actions/carsActions';
 
-const FormSearchComponent = (props) => {
+function FormSearchComponent(props) {
   const dispatch = useDispatch();
   const { cars, error } = useSelector((state) => state.cars);
 
@@ -17,49 +17,48 @@ const FormSearchComponent = (props) => {
     }
   }, [error]);
 
-  const [driver, setDriver] = useState("");
-  const [tanggal, setTanggal] = useState("");
-  const [jam, setJam] = useState("");
-  const [penumpang, setPenumpang] = useState("");
-  const dateTime = tanggal + " " + jam;
+  const [driver, setDriver] = useState('');
+  const [tanggal, setTanggal] = useState('');
+  const [jam, setJam] = useState('');
+  const [penumpang, setPenumpang] = useState('');
+  const dateTime = `${tanggal} ${jam}`;
 
   function getDateTimeNow() {
-    let today = new Date();
-    let date = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
-    let time = String(today.getHours()).padStart(2, "0") + ":" + String(today.getMinutes()).padStart(2, "0") + ":" + String(today.getSeconds()).padStart(2, "0");
-    return date + " " + time + "";
+    const today = new Date();
+    const date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const time = `${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}:${String(today.getSeconds()).padStart(2, '0')}`;
+    return `${date} ${time}`;
   }
 
   const filterCar = async () => {
-    if (driver === undefined || driver === "") {
+    if (driver === undefined || driver === '') {
       return Swal.fire({
         position: 'top',
         icon: 'warning',
         title: 'Please select driver type',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1000,
       });
-    } else if (dateTime < getDateTimeNow()) {
+    } if (dateTime < getDateTimeNow()) {
       return Swal.fire({
         position: 'top',
         icon: 'warning',
         title: 'Please select a date and time greater than now',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1000,
       });
-    } else if (penumpang === undefined || penumpang === "") {
+    } if (penumpang === undefined || penumpang === '') {
       return dispatch(getAllCars({ tanggal, jam, penumpang: 1 }));
-    } else {
-      return dispatch(getAllCars({ tanggal, jam, penumpang }));
     }
+    return dispatch(getAllCars({ tanggal, jam, penumpang }));
   };
 
   const ResetCar = async () => {
-    setDriver("");
-    setTanggal("");
-    setJam("");
-    setPenumpang("");
-      return useState(null);
+    setDriver('');
+    setTanggal('');
+    setJam('');
+    setPenumpang('');
+    return useState(null);
   };
 
   return (
@@ -69,7 +68,7 @@ const FormSearchComponent = (props) => {
           <div className="col-lg-11 col-12 d-flex justify-content-center">
             <div className="cars-filter">
               <div className="row row-cols-lg-auto align-items-center">
-              <div className="col-12 col-md-6 col-lg select-tipe">
+                <div className="col-12 col-md-6 col-lg select-tipe">
                   <label className="form-label" htmlFor="typeDriver">Tipe Driver </label>
                   <Form.Select id="typeDriver" value={driver} onChange={(e) => setDriver(e.target.value)} required>
                     <option value="" hidden>Pilih Tipe Driver</option>
@@ -118,7 +117,7 @@ const FormSearchComponent = (props) => {
                     </Form.Control>
                     {/* <button className="btn btn-outline-secondary bg-white border-user border border-start-0"
                       type="button">
-                      {/* <img src="asset/gambar/fi_clock.svg" alt="" /> 
+                      {/* <img src="asset/gambar/fi_clock.svg" alt="" />
                     </button> */}
                   </div>
                 </div>
@@ -167,6 +166,6 @@ const FormSearchComponent = (props) => {
       </main>
     </>
   );
-};
+}
 
 export default FormSearchComponent;

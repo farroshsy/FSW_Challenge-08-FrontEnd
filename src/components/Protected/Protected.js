@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import Swal from 'sweetalert2';
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 function Protected({ children }) {
-    const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
-    if (!isAuthenticated) {
-        Swal.fire({
-            position: 'top',
-            icon: 'warning',
-            title: 'Please login first',
-            showConfirmButton: false,
-            timer: 1000
-        });
-        return <Navigate to={`/login`} />;
-    }
+  if (!isAuthenticated) {
+    Swal.fire({
+      position: 'top',
+      icon: 'warning',
+      title: 'Please login first',
+      showConfirmButton: false,
+      timer: 1000,
+    });
+    return <Navigate to="/login" />;
+  }
 
-    return children;
+  return children;
 }
 
 export default Protected;

@@ -1,14 +1,10 @@
-
 import '../App.css';
 import FormRegister from '../components/Register/FormRegister';
 
 function Register() {
-
-    return (
-        <>
-            <FormRegister />
-        </>
-    );
+  return (
+    <FormRegister />
+  );
 }
 
 export default Register;

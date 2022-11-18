@@ -1,9 +1,9 @@
-import {combineReducers} from "redux";
+import { combineReducers } from 'redux';
 
-import authReducer from "./authReducer";
-import carsReducer from "./carsReducer";
+import authReducer from './authReducer';
+import carsReducer from './carsReducer';
 
 export default combineReducers({
-    auth: authReducer,
-    cars: carsReducer,
+  auth: authReducer,
+  cars: carsReducer,
 });
